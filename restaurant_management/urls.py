@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from restaurant_management import views as restaurant_views
 from . import views 
+from home import views 
 
 
 urlpatterns = [
@@ -26,7 +27,7 @@ urlpatterns = [
     path('api/accounts/', include('account.urls')),
     path('api/products/', include('products.urls')),
     path('api/orders/', include('orders.urls')),
-    path("", include("home.urls")),     # homepage
+    path("", views.home, name="home"),
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
 ]
 
