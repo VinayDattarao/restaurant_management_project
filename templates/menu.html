@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .menu-container {
+            background: rgba(0,0,0,0.55);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+            max-width: 780px;
+            width: 100%;
+            animation: float 4s ease-in-out infinite;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 28px;
+            font-size: 2.8em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3em;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        nav {
+            margin-bottom: 25px;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 12px;
+            padding: 14px 28px;
+            font-size: 1.15em;
+            color: white;
+            background-color: #3498db;
+            text-decoration: none;
+            border-radius: 9px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="{% url 'restaurant' %}">Restaurant</a>
+        </nav>
+
+        <h1>Our Menu</h1>
+        <ul>
+            {% for item in menu_items %}
+                <li>
+                    <span>{{ item.name }}</span>
+                    <span>₹{{ item.price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

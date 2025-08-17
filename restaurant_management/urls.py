@@ -31,6 +31,8 @@ urlpatterns = [
     path('api/orders/', include('orders.urls')),
     path("", views.home, name="home"),
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
+    path('menu/', views.menu, name='menu'),  # add this
+
 ]
 
 # Serve static images from /images/ URL in development
