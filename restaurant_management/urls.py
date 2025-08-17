@@ -19,6 +19,8 @@ from django.urls import path,include
 from restaurant_management import views as restaurant_views
 from . import views 
 from home import views 
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -31,3 +33,6 @@ urlpatterns = [
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
 ]
 
+# Serve static images from /images/ URL in development
+if settings.DEBUG:
+    urlpatterns += static('/images/', document_root=settings.BASE_DIR / 'images')

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 - Page Not Found</title>
+    <style>
+        /* Full screen flex container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+
+            /* Animated gradient background */
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* Gradient animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating animation for container */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Container for content */
+        .container {
+            text-align: center;
+            padding: 60px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            max-width: 700px;
+
+            animation: float 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        /* Styled button like previous pages */
+        button {
+            margin-top: 20px;
+            padding: 14px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found 😅</h2>
+        <p>The page you’re looking for doesn’t exist.</p>
+        <button onclick="window.location.href='/'">Go Back Home</button>
+    </div>
+</body>
+</html>
