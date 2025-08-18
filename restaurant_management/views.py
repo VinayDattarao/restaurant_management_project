@@ -1,8 +1,4 @@
 from django.shortcuts import render
 
-def restaurant(request):
-    return render(request, "restaurant.html")
-
-
-
-
+def restaurant_page(request):
+    return render(request, 'restaurant.html')
