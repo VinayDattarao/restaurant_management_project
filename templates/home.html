@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Homepage</title>
-    <style>
-        /* Full screen flex container */
-        body {
-            display: flex;
-            justify-content: center;  /* horizontal center */
-            align-items: center;      /* vertical center */
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
+<title>Homepage</title>
+<style>
+/* Full screen flex container */
+body {
+display: flex;
+justify-content: center;  /* horizontal center */
+align-items: center;      /* vertical center */
+height: 100vh;
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+color: #fff;
 
-            /* Animated gradient background */
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
+/* Animated gradient background */
+background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+background-size: 400% 400%;
+animation: gradientBG 15s ease infinite;
+}
 
-        /* Gradient animation */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* Gradient animation */
+@keyframes gradientBG {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
 
-        /* Container for content */
-        .container {
-            text-align: center;
-            padding: 55px; /* slightly smaller than original */
-            background-color: rgba(0,0,0,0.58); /* slightly lighter contrast */
-            border-radius: 19px; /* a bit smaller rounding */
-            box-shadow: 0 11px 28px rgba(0,0,0,0.38); /* slightly lighter shadow */
-            max-width: 88%; /* slightly smaller width */
-        }
+/* Container for content */
+.container {
+text-align: center;
+padding: 55px; /* slightly smaller than original */
+background-color: rgba(0,0,0,0.58); /* slightly lighter contrast */
+border-radius: 19px; /* a bit smaller rounding */
+box-shadow: 0 11px 28px rgba(0,0,0,0.38); /* slightly lighter shadow */
+max-width: 88%; /* slightly smaller width */
+}
 
-        /* Main headings */
-        h1 {
-            color: #fff;
-            font-size: 2.9em; /* slightly smaller than original 3em */
-            margin-bottom: 28px;
-        }
+/* Main headings */
+h1 {
+color: #fff;
+font-size: 2.9em; /* slightly smaller than original 3em */
+margin-bottom: 28px;
+}
 
-        /* Image styling */
-        img {
-            width: 75%;   /* slightly smaller than original 80% */
-            max-width: 580px;
-            margin: 28px 0;
-            border-radius: 14px;
-            box-shadow: 0 7px 19px rgba(0,0,0,0.45);
-        }
+/* Image styling */
+img {
+width: 75%;   /* slightly smaller than original 80% */
+max-width: 580px;
+margin: 28px 0;
+border-radius: 14px;
+box-shadow: 0 7px 19px rgba(0,0,0,0.45);
+}
 
-        /* Paragraph styling */
-        p {
-            font-size: 1.45em; /* slightly smaller than original 1.5em */
-            margin-bottom: 28px;
-        }
+/* Paragraph styling */
+p {
+font-size: 1.45em; /* slightly smaller than original 1.5em */
+margin-bottom: 28px;
+}
 
-        /* Links / Buttons */
-        a {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 14px 29px; /* just a tiny bit smaller */
-            font-size: 1.15em;   /* slightly smaller text */
-            background-color: #3498db; /* blue */
-            color: white;
-            text-decoration: none;
-            border-radius: 9px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+/* Links / Buttons */
+a {
+display: inline-block;
+margin: 20px 0;
+padding: 14px 29px; /* just a tiny bit smaller */
+font-size: 1.15em;   /* slightly smaller text */
+background-color: #3498db; /* blue */
+color: white;
+text-decoration: none;
+border-radius: 9px;
+transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-        a:hover {
-            background-color: #2980b9; /* slightly darker on hover */
-            transform: scale(1.05);    /* small zoom effect */
-        }
-    </style>
+a:hover {
+background-color: #2980b9; /* slightly darker on hover */
+transform: scale(1.05);    /* small zoom effect */
+}
+</style>
 </head>
 <body>
 <div class="container">
-    <h1>Welcome to {{ restaurant_name }} 🎉</h1>
+<h1>Welcome to {{ restaurant_name }} 🎉</h1>
 
-    <img src="/images/res1.jpg" alt="Restaurant Image" class="animated-img">
+<img src="/images/res1.jpg" alt="Restaurant Image" class="animated-img">
 
-    <p>Explore our delicious menu and enjoy a great dining experience!</p>
+<p>Explore our delicious menu and enjoy a great dining experience!</p>
 
-    
-    <p><strong>📞 Contact us: {{ restaurant_phone }}</strong></p>
 
-    <a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
+<p><strong>📞 Contact us: {{ restaurant_phone }}</strong></p>
+
+<a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
 </div>
 </body>
-</html>
+</html>>
