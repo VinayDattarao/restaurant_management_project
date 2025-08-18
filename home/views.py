@@ -32,3 +32,6 @@ def menu(request):
     
     context = {'menu_items': menu_items}
     return render(request, 'menu.html', context)
+
+def contact(request):
+    return render(request, "contact.html")

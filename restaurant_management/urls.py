@@ -32,6 +32,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
     path('menu/', views.menu, name='menu'),  # add this
+    path("contact/", views.contact, name="contact"),  # contact page
 
 ]
 

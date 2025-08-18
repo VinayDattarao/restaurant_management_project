@@ -4,3 +4,5 @@ def restaurant(request):
     return render(request, "restaurant.html")
 
 
+
+
