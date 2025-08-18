@@ -16,25 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from restaurant_management import views as restaurant_views
-from . import views 
-from home import views 
-from django.conf import settings
-from django.conf.urls.static import static
-
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('home.urls')),
-    path('api/accounts/', include('account.urls')),
-    path('api/products/', include('products.urls')),
-    path('api/orders/', include('orders.urls')),
+    path('api/',include('home.urls')),
+    path('api/accounts/',include('account.urls')),
+    path('api/products/',include('products.urls')),
+    path('api/orders/',include('orders.urls')),
     path("", views.home, name="home"),
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
     path('menu/', views.menu, name='menu'),  # add this
     path("contact/", views.contact, name="contact"),  # contact page
 
-]
 
 # Serve static images from /images/ URL in development
 if settings.DEBUG:
