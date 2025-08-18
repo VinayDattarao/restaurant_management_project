@@ -78,15 +78,17 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to {{ restaurant_name }} 🎉</h1>
+<div class="container">
+    <h1>Welcome to {{ restaurant_name }} 🎉</h1>
 
-        <!-- Slightly smaller Image -->
-        <img src="/images/res1.jpg" alt="Restaurant Image" class="animated-img">
+    <img src="/images/res1.jpg" alt="Restaurant Image" class="animated-img">
 
-        <p>Explore our delicious menu and enjoy a great dining experience!</p>
+    <p>Explore our delicious menu and enjoy a great dining experience!</p>
 
-        <a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
-    </div>
+    <!-- ✅ New phone number -->
+    <p><strong>📞 Contact us: {{ restaurant_phone }}</strong></p>
+
+    <a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
+</div>
 </body>
 </html>

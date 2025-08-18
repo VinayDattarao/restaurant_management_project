@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# settings.py
+RESTAURANT_PHONE = "+91 98765 43210"
 
 # Application definition
 
