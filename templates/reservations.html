@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reservations - Leo's 5 Star Restaurant</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f9f9f9;
+color: #333;
+text-align: center;
+padding: 50px;
+}
+h1 {
+font-size: 2.5em;
+color: #444;
+margin-bottom: 20px;
+}
+p {
+font-size: 1.2em;
+color: #666;
+}
+.container {
+background: white;
+border-radius: 12px;
+padding: 40px;
+box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+display: inline-block;
+}
+footer {
+margin-top: 40px;
+font-size: 0.9em;
+color: #888;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Reservations Page</h1>
+<p>Online reservations will be available soon. Please check back later!</p>
+</div>
+
+<footer>
+&copy; <span id="year"></span> Leo's 5 Star Restaurant. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
