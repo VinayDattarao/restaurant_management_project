@@ -1,34 +1,91 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Restaurant
 
-def home(request):
-    restaurant = Restaurant.objects.first()
-    restaurant_name = restaurant.name if restaurant else "My Restaurant"
-    restaurant_phone = restaurant.phone_number if restaurant else "Not Available"
+# DRF imports
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import RestaurantSerializer
 
-    return render(
-        request,
-        "home.html",
-        {
-            "restaurant_name": restaurant_name,
-            "restaurant_phone": restaurant_phone,
-        },
-    )
+
+# ---------------- Regular HTML Views ---------------- #
+def home(request):
+restaurant = Restaurant.objects.first()
+restaurant_name = restaurant.name if restaurant else "My Restaurant"
+restaurant_phone = restaurant.phone_number if restaurant else "Not Available"
+
+return render(
+request,
+"home.html",
+{
+"restaurant_name": restaurant_name,
+"restaurant_phone": restaurant_phone,
+},
+)
 
 def restaurant(request):
-    return render(request, "restaurant.html")   # restaurant page template
+return render(request, "restaurant.html")   # restaurant page template
 
 def menu(request):
-    menu_items = [
-    {'name': 'Butter Chicken', 'price': 275},
-    {'name': 'Paneer Butter Masala', 'price': 250},
-    {'name': 'Veg Manchuria', 'price': 150},
-    {'name': 'Hyderabadi Chicken Biryani', 'price': 210},
-    {'name': 'Paneer Biryani', 'price': 185},
-    ]
+try:
+menu_items = [
+{'name': 'Butter Chicken', 'price': 275},
+{'name': 'Paneer Butter Masala', 'price': 250},
+{'name': 'Veg Manchuria', 'price': 150},
 
-    context = {'menu_items': menu_items}
-    return render(request, 'menu.html', context)
+# Biryani
+{'name': 'Hyderabadi Chicken Biryani', 'price': 210},
+{'name': 'Paneer Biryani', 'price': 185},
+]
+
+context = {'menu_items': menu_items}
+return render(request, 'menu.html', context)
+
+except Exception as e:
+return HttpResponse(f"⚠️ Something went wrong while loading the menu: {str(e)}", status=500)
 
 def contact(request):
-    return render(request, "contact.html")
+return render(request, "contact.html")
+
+def reservations(request):
+return render(request, "reservations.html")
+
+
+# ---------------- REST API Views ---------------- #
+@api_view(['GET', 'POST'])
+def restaurant_list(request):
+if request.method == 'GET':
+restaurants = Restaurant.objects.all()
+serializer = RestaurantSerializer(restaurants, many=True)
+return Response(serializer.data)
+
+elif request.method == 'POST':
+serializer = RestaurantSerializer(data=request.data)
+if serializer.is_valid():
+serializer.save()
+return Response(serializer.data, status=status.HTTP_201_CREATED)
+return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def restaurant_detail(request, pk):
+try:
+restaurant = Restaurant.objects.get(pk=pk)
+except Restaurant.DoesNotExist:
+return Response({"error": "Restaurant not found"}, status=status.HTTP_404_NOT_FOUND)
+
+if request.method == 'GET':
+serializer = RestaurantSerializer(restaurant)
+return Response(serializer.data)
+
+elif request.method == 'PUT':
+serializer = RestaurantSerializer(restaurant, data=request.data)
+if serializer.is_valid():
+serializer.save()
+return Response(serializer.data)
+return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+elif request.method == 'DELETE':
+restaurant.delete()
+return Response({"message": "Restaurant deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
