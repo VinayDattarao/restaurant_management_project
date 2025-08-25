@@ -1,46 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #89f7fe, #66a6ff);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .contact-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            animation: fadeIn 1.2s ease-in-out;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #444;
-        }
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(20px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+background: linear-gradient(135deg, #89f7fe, #66a6ff);
+margin: 0;
+padding: 0;
+}
+.container {
+background: #fff;
+padding: 20px;
+margin: 50px auto;
+width: 400px;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+input, textarea, button {
+width: 90%;
+margin: 8px 0;
+padding: 10px;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 14px;
+}
+button {
+background: #66a6ff;
+color: white;
+border: none;
+cursor: pointer;
+}
+button:hover {
+background: #4d8ae8;
+}
+.error {
+color: red;
+font-size: 13px;
+}
+</style>
 </head>
 <body>
-    <div class="contact-card">
-        <h1>📞 Contact Us</h1>
-        <p><strong>Phone:</strong> +91 7097570560</p>
-        <p><strong>Email:</strong> contact@myrestaurant.com</p>
-        <p><strong>Address:</strong> 123, Main Street, Hyderabad</p>
-    </div>
+<div class="container">
+<h2>Contact Us</h2>
+<form id="contactForm">
+<input type="text" id="name" placeholder="Your Name"><br>
+<span id="nameError" class="error"></span><br>
+
+<input type="email" id="email" placeholder="Your Email"><br>
+<span id="emailError" class="error"></span><br>
+
+<textarea id="message" placeholder="Your Message"></textarea><br>
+<button type="submit">Submit</button>
+</form>
+<p><strong>Phone:</strong> +91 7097570560</p>
+<p><strong>Email:</strong> contact@myrestaurant.com</p>
+<p><strong>Address:</strong> 123, Main Street, Hyderabad</p>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+let valid = true;
+
+// clear old errors
+document.getElementById("nameError").textContent = "";
+document.getElementById("emailError").textContent = "";
+
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+
+if (name === "") {
+document.getElementById("nameError").textContent = "Name is required.";
+valid = false;
+}
+
+if (email === "") {
+document.getElementById("emailError").textContent = "Email is required.";
+valid = false;
+}
+
+if (!valid) {
+event.preventDefault(); // stop form submission
+}
+});
+</script>
 </body>
 </html>
