@@ -18,3 +18,10 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ("customer_name",)
     ordering = ("-created_at",)
     filter_horizontal = ("items",)  # nice UI for selecting multiple dishes
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ("id", "customer", "status", "total_amount", "created_at")
+    list_filter = ("status", "created_at")
+    search_fields = ("customer__username",)
+    filter_horizontal = ("items",)  # better UI for ManyToMany field
