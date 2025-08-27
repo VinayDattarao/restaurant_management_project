@@ -28,6 +28,7 @@ urlpatterns = [
     path("restaurant/", views.restaurant, name="restaurant"),  # restaurant page
     path('menu/', views.menu, name='menu'),  # add this
     path("contact/", views.contact, name="contact"),  # contact page
+    path('', include('feedback.urls')),
 
 
 # Serve static images from /images/ URL in development
