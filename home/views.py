@@ -8,7 +8,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import RestaurantSerializer
 
-
+class MenuView(APIView):
+def get(self, request):
+# Hardcoded menu data for now
+menu = [
+{"name": "Margherita Pizza", "description": "Classic cheese and tomato pizza", "price": 8.99},
+{"name": "Veggie Burger", "description": "Grilled veggie patty with fresh toppings", "price": 6.49},
+{"name": "Pasta Alfredo", "description": "Creamy Alfredo pasta with mushrooms", "price": 7.99},
+{"name": "Caesar Salad", "description": "Crisp lettuce with Caesar dressing", "price": 5.99},
+]
+return Response(menu)
 # ---------------- Regular HTML Views ---------------- #
 def home(request):
 restaurant = Restaurant.objects.first()
