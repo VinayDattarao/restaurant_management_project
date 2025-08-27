@@ -89,13 +89,9 @@ serializer.save()
 return Response(serializer.data, status=status.HTTP_201_CREATED)
 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['GET', 'PUT', 'DELETE'])
 def restaurant_detail(request, pk):
-try:
-restaurant = Restaurant.objects.get(pk=pk)
-except Restaurant.DoesNotExist:
-return Response({"error": "Restaurant not found"}, status=status.HTTP_404_NOT_FOUND)
+restaurant = get_object_or_404(Restaurant, pk=pk)
 
 if request.method == 'GET':
 serializer = RestaurantSerializer(restaurant)
@@ -110,4 +106,7 @@ return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 elif request.method == 'DELETE':
 restaurant.delete()
-return Response({"message": "Restaurant deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+return Response(
+{"message": "Restaurant deleted successfully"},
+status=status.HTTP_204_NO_CONTENT
+)
