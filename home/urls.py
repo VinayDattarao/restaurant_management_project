@@ -5,4 +5,5 @@ urlpatterns = [
     path("", views.home, name="restaurant_home"),
     path('menu/', views.menu, name='menu'),
     path("contact/", views.contact, name="contact"),
+    path('', include('feedback.urls')),
 ]
