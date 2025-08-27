@@ -51,6 +51,19 @@ return render(request, "contact.html")
 def reservations(request):
 return render(request, "reservations.html")
 
+def feedback_view(request):
+if request.method == "POST":
+form = FeedbackForm(request.POST)
+if form.is_valid():
+form.save()
+# PRG pattern to avoid duplicate submissions on refresh
+return redirect(f"{reverse('feedback')}?submitted=1")
+else:
+form = FeedbackForm()
+
+submitted = request.GET.get("submitted") == "1"
+return render(request, "feedback.html", {"form": form, "submitted": submitted})
+
 
 # ---------------- REST API Views ---------------- #
 @api_view(['GET', 'POST'])
