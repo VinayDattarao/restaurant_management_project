@@ -3,117 +3,89 @@
 <head>
 <title>Homepage</title>
 <style>
-/* Full screen flex container */
-/* Full screen flex container */
 body {
 display: flex;
 flex-direction: column;
-justify-content: center;  /* vertical & horizontal */
-align-items: center;
-height: 100vh;
+min-height: 100vh;
 margin: 0;
-font-family: Arial, Helvetica, sans-serif;
-color: #fff;
-
-/* Animated gradient background */
-background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-background-size: 400% 400%;
-animation: gradientBG 15s ease infinite;
+font-family: Arial, sans-serif;
 }
-
-/* Gradient animation */
-@keyframes gradientBG {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
-}
-
-/* Container for content */
-.container {
+header {
+background: #007bff;
+color: white;
 text-align: center;
-padding: 50px;
-background-color: rgba(0,0,0,0.6); /* translucent dark background */
-border-radius: 20px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-max-width: 90%;
-animation: fadeIn 1.2s ease-in-out;
+padding: 15px;
 }
-
-/* Fade-in effect */
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+main {
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
-
-/* Main headings */
-h1 {
+.search-box {
+margin: 20px 0;
+}
+input[type="text"] {
+padding: 8px;
+width: 250px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 16px;
+}
+button {
+padding: 8px 14px;
+margin-left: 5px;
+border: none;
+border-radius: 6px;
+background: #007bff;
+color: white;
+cursor: pointer;
+font-size: 16px;
+}
+button:hover {
+background: #0056b3;
+}
+footer {
+background: #222;
 color: #fff;
-font-size: 3em;
-margin-bottom: 25px;
+text-align: center;
+padding: 10px;
 }
-
-/* Image styling */
-img {
-width: 80%;
-max-width: 600px;
-margin: 25px 0;
-border-radius: 15px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-/* Paragraph styling */
-p {
-font-size: 1.5em;
-margin-bottom: 25px;
-}
-
-/* Links / Buttons */
 a {
 display: inline-block;
-margin: 20px 0;
-padding: 15px 30px;
-font-size: 1.2em;
-background-color: #3498db; /* blue */
-color: white;
-text-decoration: none;
-border-radius: 10px;
-transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-a:hover {
-background-color: #2980b9;
-transform: scale(1.05);
-}
-
-/* Footer styling */
-footer {
 margin-top: 20px;
-font-size: 14px;
-color: #222;
-background: rgba(255, 255, 255, 0.7);
-padding: 10px 20px;
-border-radius: 8px;
-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-animation: fadeIn 1.5s ease-in-out;
+text-decoration: none;
+color: #007bff;
+font-weight: bold;
+}
+a:hover {
+text-decoration: underline;
 }
 </style>
 </head>
 <body>
-<div class="container">
-<h1>Welcome to {{ restaurant_name }} 🎉</h1>
 
-<img src="/images/res1.jpg" alt="Restaurant Image">
+<header>
+<h1>Welcome to Our Homepage</h1>
+</header>
 
-<p>Explore our delicious menu and enjoy a great dining experience!</p>
-
-<p><strong>📞 Contact us: {{ restaurant_phone }}</strong></p>
-
-<a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
+<main>
+<!-- Search Bar -->
+<div class="search-box">
+<form action="/search" method="GET">
+<input type="text" name="q" placeholder="Search menu items...">
+<button type="submit">Search</button>
+</form>
 </div>
 
+<!-- Link to restaurant page -->
+<a href="{% url 'restaurant' %}">Go to Restaurant Page</a>
+</main>
+
 <footer>
-<p><strong>Opening Hours:</strong> Mon-Fri: 11am - 9pm | Sat-Sun: 10am - 10pm></p>
+<p><strong>Opening Hours:</strong> Mon-Fri: 11am - 9pm | Sat-Sun: 10am - 10pm</p>
 </footer>
+
 </body>
 </html>
->
